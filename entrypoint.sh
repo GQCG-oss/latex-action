@@ -34,7 +34,7 @@ fi
 if [[ -z "$compiler" && -z "$args" ]]; then
   warn "Input 'compiler' and 'args' are both empty. Reset them to default values."
   compiler="latexmk"
-  args="-pdf -file-line-error -halt-on-error -interaction=nonstopmode"
+  args="-pdf -file-line-error -interaction=nonstopmode"
 fi
 
 IFS=' ' read -r -a args <<< "$args"
@@ -56,7 +56,7 @@ if [[ "$compiler" = "latexmk" ]]; then
     done
     args+=("-lualatex")
     # LuaLaTeX use --flag instead of -flag for arguments.
-    for VAR in -file-line-error -halt-on-error -shell-escape; do
+    for VAR in -file-line-error -shell-escape; do
       for i in "${!args[@]}"; do
         if [[ "${args[i]}" = "$VAR" ]]; then
           args[i]="-$VAR"
