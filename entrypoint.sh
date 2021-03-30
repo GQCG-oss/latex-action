@@ -84,8 +84,8 @@ fi
 
 if [[ -n "$extra_system_packages" ]]; then
   for pkg in $extra_system_packages; do
-    info "Install $pkg by apk"
-    apk --no-cache add "$pkg"
+    info "Install $pkg by apt-get"
+    sudo apt-get install "$pkg"
   done
 fi
 
