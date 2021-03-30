@@ -19,7 +19,7 @@ root_file="${1}"
 working_directory="${2}"
 compiler="${3}"
 args="${4}"
-extra_packages="${5}"
+extra_python_packages="${5}"
 extra_system_packages="${6}"
 pre_compile="${7}"
 post_compile="${8}"
@@ -89,8 +89,11 @@ if [[ -n "$extra_system_packages" ]]; then
   done
 fi
 
-if [[ -n "$extra_packages" ]]; then
-  warn "Input 'extra_packages' is deprecated. We now build LaTeX document with full TeXLive installed."
+if [[ -n "$extra_python_packages" ]]; then
+  for pkg in $extra_python_packages; do
+    info "Install $pkg by pip"
+    pip install "$pkg"
+  done
 fi
 
 if [[ -n "$working_directory" ]]; then
