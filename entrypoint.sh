@@ -92,7 +92,7 @@ fi
 if [[ -n "$extra_python_packages" ]]; then
   for pkg in $extra_python_packages; do
     info "Install $pkg by pip"
-    pip install "$pkg"
+    pip3 install "$pkg"
   done
 fi
 
